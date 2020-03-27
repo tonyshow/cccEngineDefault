@@ -1,8 +1,8 @@
 var fs = require("fs");
 var path = require("path");
 var child_process = require("child_process");
-var templateCfg = require('./templateCfg');
-var cccEngineCfg = require('./cccEngineCfg.js');
+var templateCfg = require('./cfg/cfgTemplate');
+var cccEngineCfg = require('./cfg/cfgCCCEngine');
 var app = module.exports = {};
 
 
@@ -35,23 +35,23 @@ app.rmFileName = function(_path)
 
 app.doMain = function()
 {
-    let cccEnginePath = cccEngineCfg.getEnginePath();
+    let cccEnginePath = cccEngineCfg.getEnginePathRes();
     let cccVersion = cccEngineCfg.getEngineVersion();
     let cccVersionFolderName = `./primary/${cccVersion}`
     fs.exists(cccEnginePath, (exists) =>
-    { 
+    {
         if (!exists)
-        {    
+        {
             console.log(cccEnginePath)
             console.log("引擎路径不存在")
-            return; 
-        }  
+            return;
+        }
         fs.exists(cccVersionFolderName, (exists) =>
-        { 
+        {
             if (exists)
-            {    
+            {
                 // console.log(`${cccVersionFolderName}\n版本文件夹已存在`);
-            }  
+            }
             else
             {
                 fs.mkdirSync(cccVersionFolderName);
@@ -60,21 +60,24 @@ app.doMain = function()
             for (let _path of templateCfg.paths)
             {
                 let engineFilePath = `${cccEnginePath}${_path}`
-              
-                let versionFilePath  = `${cccVersionFolderName}/${_path}`
+
+                let versionFilePath = `${cccVersionFolderName}/${_path}`
                 let mkdirPath = `${cccVersionFolderName}/${this.rmFileName(_path)}`
                 this.mkdirsSync(mkdirPath);
-                
-                try {
+
+                try
+                {
                     fs.statSync(versionFilePath).isFile();
-                    console.warn(`文件${versionFilePath}已提取过`); 
-                } catch (error) {
+                    console.warn(`文件${versionFilePath}已提取过`);
+                }
+                catch (error)
+                {
                     let cpInfo = `cp -r -f ${engineFilePath} ${mkdirPath} `
                     child_process.execSync(cpInfo);
                     console.log(`成功提取:${engineFilePath}`)
                 }
 
-               
+
                 // if(!stat){
                 //     let cpInfo = `cp -r -f ${engineFilePath} ${mkdirPath} `
                 //     child_process.execSync(cpInfo);

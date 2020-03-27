@@ -1,1 +1,5 @@
 cccEngineCfg.js
+._*.*
+._.DS_Store
+**/*.DS_Store
+cfgCCCEngine.js
