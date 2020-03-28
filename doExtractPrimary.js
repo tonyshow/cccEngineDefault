@@ -42,8 +42,8 @@ app.doMain = function()
     {
         if (!exists)
         {
-            console.log(cccEnginePath)
-            console.log("引擎路径不存在")
+            console.log(cccEnginePath);
+            console.log("引擎路径不存在");
             return;
         }
         fs.exists(cccVersionFolderName, (exists) =>
