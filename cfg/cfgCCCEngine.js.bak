@@ -5,8 +5,16 @@ app.getEnginePath = function()
 {
     let _cccVersion = this.getEngineVersion();
     let paths = {
-        "darwin": `/Applications/CocosCreator/Creator/${_cccVersion}/CocosCreator.app/Contents/Resources/`,
+        "darwin": `/Applications/CocosCreator/Creator/${_cccVersion}`,
         "win32": `c://CocosCreator${_cccVersion}/Resources`,
+    }
+    return paths[this.getPlatform()];
+};
+app.getEnginePathExe = function()
+{ 
+    let paths = {
+        "darwin": `${this.getEnginePath()}/CocosCreator.app/Contents/MacOS/CocosCreator`,
+        "win32": `${this.getEnginePath()}/CocosCreator.exe`,
     }
     return paths[this.getPlatform()];
 };
@@ -19,6 +27,5 @@ app.getEngineVersion = function()
 app.getPlatform = function()
 {
     let platform = os.platform();
-    console.log(platform);
     return platform
 }
