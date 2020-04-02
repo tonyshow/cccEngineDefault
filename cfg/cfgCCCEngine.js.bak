@@ -32,7 +32,7 @@ app.getEnginePathRes = function()
 // 获取引擎路径
 app.getEngineVersion = function()
 {
-    return '2.3.3-rc.3'
+    return '2.3.3-rc.4'
 };
 // darwin:苹果系统，win32:windows系统
 app.getPlatform = function()
