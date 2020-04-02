@@ -20,6 +20,17 @@ app.getEnginePathExe = function()
     }
     return paths[this.getPlatform()];
 };
+//cocos2d-x路径
+app.getEngineCocos2dxPath = function()
+{
+    // '/Applications/CocosCreator/Creator/version/CocosCreator.app/Contents/Resources/cocos2d-x'
+    let paths = {
+        "darwin": `${this.getEnginePath()}/CocosCreator.app/Contents/Resources/cocos2d-x`,
+        "win32": `${this.getEnginePath()}/Resources/cocos2d-x`,
+    }
+    return paths[this.getPlatform()];
+};
+//cocosResources路径
 app.getEnginePathRes = function()
 {
     let _cccVersion = this.getEngineVersion();
@@ -32,7 +43,7 @@ app.getEnginePathRes = function()
 // 获取引擎路径
 app.getEngineVersion = function()
 {
-    return '2.3.3-rc.4'
+    return '2.3.3-rc.3'
 };
 // darwin:苹果系统，win32:windows系统
 app.getPlatform = function()

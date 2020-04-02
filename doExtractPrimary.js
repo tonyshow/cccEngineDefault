@@ -59,7 +59,7 @@ app.doMain = function()
 
             for (let _path of templateCfg.paths)
             {
-                let engineFilePath = `${cccEnginePath}${_path}`
+                let engineFilePath = `${cccEnginePath}/${_path}`
 
                 let versionFilePath = `${cccVersionFolderName}/${_path}`
                 let mkdirPath = `${cccVersionFolderName}/${this.rmFileName(_path)}`
