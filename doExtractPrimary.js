@@ -76,14 +76,6 @@ app.doMain = function()
                     child_process.execSync(cpInfo);
                     console.log(`成功提取:${engineFilePath}`)
                 }
-
-
-                // if(!stat){
-                //     let cpInfo = `cp -r -f ${engineFilePath} ${mkdirPath} `
-                //     child_process.execSync(cpInfo);
-                // }else{
-                //     console.warn(`文件${versionFilePath}已提取过`); 
-                // }  
             }
         })
     })
