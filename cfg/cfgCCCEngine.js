@@ -1,6 +1,6 @@
 var os = require('os');
 var app = module.exports = {};
-// 获取引擎路径
+// 获取引擎路径test
 app.getEnginePath = function()
 {
     let _cccVersion = this.getEngineVersion();
